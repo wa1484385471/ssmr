@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/Desktop/项目组/SpringBoot/01_boot_基础/01_boot_基础/02_代码/springboot_1/boot.iml" filepath="$USER_HOME$/Desktop/项目组/SpringBoot/01_boot_基础/01_boot_基础/02_代码/springboot_1/boot.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/项目组/SpringBoot/02_springboot/springboot_2/boot (1).iml" filepath="$USER_HOME$/Desktop/项目组/SpringBoot/02_springboot/springboot_2/boot (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/../springboot_02/springboot_02.iml" filepath="$PROJECT_DIR$/../springboot_02/springboot_02.iml" />
+    </modules>
+  </component>
+</project>

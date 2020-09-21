@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.boot.mapper.DeptMapper">
+
+    <resultMap id="deptInfo" type="com.hp.boot.pojo.DeptInfo">
+        <id property="deptId" column="deptId"/>
+
+        <result property="deptName" column="deptName"/>
+        <result property="note" column="note"/>
+
+        <!--一对多 : collection -->
+        <collection property="emps" javaType="ArrayList" column="deptId" ofType="com.hp.boot.pojo.EmpInfo">
+            <id property="empId" column="empId"></id>
+
+            <result property="empName" column="empName"/>
+            <result property="sex" column="sex"/>
+            <result property="age" column="age"/>
+            <result property="phone" column="phone"/>
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="deptInfo">
+        select * from dept d, emp e where d.deptId = e.deptId
+    </select>
+
+</mapper>

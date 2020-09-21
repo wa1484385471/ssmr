@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.boot.mapper.EmpMapper">
+
+    <resultMap id="empInfo" type="com.hp.boot.pojo.EmpInfo">
+        <!--
+            id : 主键
+            property : 类中的属性
+            column: 对应的表字段
+         -->
+        <id property="empId" column="empId"></id>
+
+        <result property="empName" column="empName"/>
+        <result property="sex" column="sex"/>
+        <result property="age" column="age"/>
+        <result property="phone" column="phone"/>
+
+        <!--配置多对一的关系映射:association-->
+        <association property="dept" javaType="com.hp.boot.pojo.DeptInfo">
+            <id property="deptId" column="deptId"/>
+
+            <result property="deptName" column="deptName"/>
+            <result property="note" column="note"/>
+        </association>
+    </resultMap>
+
+    <select id="findAll" resultMap="empInfo">
+        select * from emp e, dept d where e.deptId = d.deptId
+    </select>
+
+    <insert id="saveEmp" parameterType="com.hp.boot.pojo.EmpInfo">
+        insert into emp (empName, sex, age, phone, deptId) values (#{empName}, #{sex}, #{age}, #{phone}, #{dept.deptId})
+    </insert>
+
+    <select id="getEmpById" resultMap="empInfo">
+        select * from emp e, dept d where e.deptId = d.deptId and e.empId = #{empId}
+    </select>
+
+    <update id="editEmp" parameterType="com.hp.boot.pojo.EmpInfo">
+        update emp set empName = #{empName}, sex = #{sex}, age = #{age}, phone = #{phone}, deptId = #{dept.deptId} where empId = #{empId}
+    </update>
+
+    <delete id="delEmpById">
+        delete from emp where empId=#{empId}
+    </delete>
+</mapper>
